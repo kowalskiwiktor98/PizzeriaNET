@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30516.212
 MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaNET.API", "PizzeriaNET.API\PizzeriaNET.API.csproj", "{25280693-9BF1-4D86-A1E7-31769D84F4EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,7 +14,24 @@ Global
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Debug|x64.Build.0 = Debug|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Debug|x86.Build.0 = Debug|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Release|x64.ActiveCfg = Release|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Release|x64.Build.0 = Release|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Release|x86.ActiveCfg = Release|Any CPU
+		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1531D799-FD98-4961-9A29-E6862674BEA8}
 	EndGlobalSection
 EndGlobal
