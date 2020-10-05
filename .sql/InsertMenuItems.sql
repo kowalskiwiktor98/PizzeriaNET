@@ -1,0 +1,18 @@
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (1, 'Margheritta', 'Pizza', 20);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (2, 'Vegetariana', 'Pizza', 22);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (3, 'Tosca', 'Pizza', 25);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (4, 'Venecia', 'Pizza', 25);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (5, 'Double Cheese', 'Pizza Addons', 2);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (6, 'Salami', 'Pizza Addons', 2);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (7, 'Ham', 'Pizza Addons', 2);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (8, 'Mushrooms', 'Pizza Addons', 2);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (9, 'Schnitzel', 'Main Dish', 30);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (10, 'Fish and Chips', 'Main Dish', 28);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (11, 'Hungarian Cake', 'Main Dish', 27);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (12, 'Salads', 'Side Dish', 5);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (13, 'Sauces', 'Side Dish', 6);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (14, 'Tomato Soup', 'Soup', 12);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (15, 'Chicken Soup', 'Soup', 10);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (16, 'Coffee', 'Drinks', 5);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (17, 'Tea', 'Drinks', 5);
+INSERT INTO public."Item" (id, "Name", "Category", "Price") VALUES (18, 'Coke', 'Drinks', 5);
