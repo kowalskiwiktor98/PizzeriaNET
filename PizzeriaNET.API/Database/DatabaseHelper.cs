@@ -18,29 +18,27 @@ namespace PizzeriaNET.API.Database
             _logger = logger;
         }
 
-        public async Task<IEnumerable<OrderHistoryEntry>> SelectOrderHistory(string email)
+        public async Task<IEnumerable<MenuItems>> GetMenuItems()
         {
-            _logger.LogInformation("Begin SelectOrderHistory");
-            var orderHistory = new List<OrderHistoryEntry>();
+            _logger.LogInformation("Begin GetMenuItems");
+            var menuItems = new List<MenuItems>();
             try
             {
                 await using (var connection = new NpgsqlConnection(Environment.GetEnvironmentVariable("connectionString")))
-                await using (var command = new NpgsqlCommand("selectorderhistory", connection))
+                await using (var command = new NpgsqlCommand("selectitems", connection))
                 {
                     await connection.OpenAsync();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("_email", NpgsqlTypes.NpgsqlDbType.Text, email);
+                    //command.Parameters.AddWithValue("date", NpgsqlTypes.NpgsqlDbType.Timestamp);
                     await using (var reader = await command.ExecuteReaderAsync())
                     {
-                        //TODO: Add reading order history
                         while (await reader.ReadAsync())
                         {
-                            orderHistory.Add(new OrderHistoryEntry()
+                            menuItems.Add(new MenuItems()
                             {
-                                OrderID = (int)reader[0],
-                                Item = (string)reader[1],
-                                Quantity = (int)reader[2],
-                                Price = Convert.ToSingle(reader[3])
+                                Name = (string)reader[0],
+                                Category = (string)reader[1],
+                                Price = Convert.ToSingle(reader[2])
                             });
                         }
                     }
@@ -51,7 +49,7 @@ namespace PizzeriaNET.API.Database
                 _logger.LogError(ex.Message);
             }
 
-            return orderHistory;
+            return menuItems;
         }
 
         public async Task InsertOrder(PlaceOrderRequest placeOrderRequest)
@@ -98,40 +96,6 @@ namespace PizzeriaNET.API.Database
             {
                 _logger.LogError(ex.Message);
             }
-        }
-
-        public async Task<IEnumerable<MenuItems>> GetMenuItems()
-        {
-            _logger.LogInformation("Begin GetMenuItems");
-            var menuItems = new List<MenuItems>();
-            try
-            {
-                await using (var connection = new NpgsqlConnection(Environment.GetEnvironmentVariable("connectionString")))
-                await using (var command = new NpgsqlCommand("selectitems", connection))
-                {
-                    await connection.OpenAsync();
-                    command.CommandType = CommandType.StoredProcedure;
-                    //command.Parameters.AddWithValue("date", NpgsqlTypes.NpgsqlDbType.Timestamp);
-                    await using (var reader = await command.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            menuItems.Add(new MenuItems()
-                            {
-                                Name = (string)reader[0],
-                                Category = (string)reader[1],
-                                Price = Convert.ToSingle(reader[2])
-                            });
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-            }
-
-            return menuItems;
         }
     }
 }
