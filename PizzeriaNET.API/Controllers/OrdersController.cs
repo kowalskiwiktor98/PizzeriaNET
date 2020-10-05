@@ -38,5 +38,13 @@ namespace PizzeriaNET.API.Controllers
             
             return Ok();
         }
+
+        [HttpGet]
+        [Route("GetOrderHistory")]
+        public async Task<ActionResult> GetOrderHistory([FromQuery] string email)
+        {
+            var orderHistory = await _databaseHelper.SelectOrderHistory(email);
+            return Ok(orderHistory);
+        }
     }
 }

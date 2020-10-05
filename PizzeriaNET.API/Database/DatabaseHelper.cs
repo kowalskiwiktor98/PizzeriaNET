@@ -97,5 +97,41 @@ namespace PizzeriaNET.API.Database
                 _logger.LogError(ex.Message);
             }
         }
+
+        public async Task<IEnumerable<OrderHistoryEntry>> SelectOrderHistory(string email)
+        {
+            _logger.LogInformation("Begin SelectOrderHistory");
+            var orderHistory = new List<OrderHistoryEntry>();
+            try
+            {
+                await using (var connection = new NpgsqlConnection(Environment.GetEnvironmentVariable("connectionString")))
+                await using (var command = new NpgsqlCommand("selectorderhistory", connection))
+                {
+                    await connection.OpenAsync();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("_email", NpgsqlTypes.NpgsqlDbType.Text, email);
+                    await using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        //TODO: Add reading order history
+                        while (await reader.ReadAsync())
+                        {
+                            orderHistory.Add(new OrderHistoryEntry()
+                            {
+                                OrderID = (int)reader[0],
+                                Item = (string)reader[1],
+                                Quantity = (int)reader[2],
+                                Price = Convert.ToSingle(reader[3])
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return orderHistory;
+        }
     }
 }
