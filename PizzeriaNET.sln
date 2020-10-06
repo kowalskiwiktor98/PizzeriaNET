@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30516.212
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaNET.API", "PizzeriaNET.API\PizzeriaNET.API.csproj", "{25280693-9BF1-4D86-A1E7-31769D84F4EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaNET.API", "PizzeriaNET.API\PizzeriaNET.API.csproj", "{25280693-9BF1-4D86-A1E7-31769D84F4EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaNET.Client.Core", "PizzeriaNET.Client.Core\PizzeriaNET.Client.Core.csproj", "{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,18 @@ Global
 		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Release|x64.Build.0 = Release|Any CPU
 		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Release|x86.ActiveCfg = Release|Any CPU
 		{25280693-9BF1-4D86-A1E7-31769D84F4EF}.Release|x86.Build.0 = Release|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Debug|x64.Build.0 = Debug|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Debug|x86.Build.0 = Debug|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Release|x64.ActiveCfg = Release|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Release|x64.Build.0 = Release|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Release|x86.ActiveCfg = Release|Any CPU
+		{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
