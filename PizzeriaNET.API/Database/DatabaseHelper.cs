@@ -29,16 +29,16 @@ namespace PizzeriaNET.API.Database
                 {
                     await connection.OpenAsync();
                     command.CommandType = CommandType.StoredProcedure;
-                    //command.Parameters.AddWithValue("date", NpgsqlTypes.NpgsqlDbType.Timestamp);
                     await using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
                             menuItems.Add(new MenuItems()
                             {
-                                Name = (string)reader[0],
-                                Category = (string)reader[1],
-                                Price = Convert.ToSingle(reader[2])
+                                ID = (int)reader[0],
+                                Name = (string)reader[1],
+                                Category = (string)reader[2],
+                                Price = Convert.ToSingle(reader[3])
                             });
                         }
                     }
@@ -84,7 +84,7 @@ namespace PizzeriaNET.API.Database
                         {
                             //FFS WHY THIS SHIT DOESN'T WORK LIKE IT SHOULD
                             command.CommandType = CommandType.StoredProcedure;
-                            command.Parameters.AddWithValue("name", NpgsqlTypes.NpgsqlDbType.Varchar, orderItem.Name);
+                            command.Parameters.AddWithValue("itemid", NpgsqlTypes.NpgsqlDbType.Integer, orderItem.ItemID);
                             command.Parameters.AddWithValue("quantity", NpgsqlTypes.NpgsqlDbType.Integer, orderItem.Quantity);
                             command.Parameters.AddWithValue("orderid", NpgsqlTypes.NpgsqlDbType.Integer, newOrderID);
                             await command.ExecuteNonQueryAsync();

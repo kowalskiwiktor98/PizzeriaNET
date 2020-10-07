@@ -15,8 +15,7 @@ namespace PizzeriaNET.API.Models
 
     public class OrderedItem
     {
-        public string Name { get; set; }
+        public int ItemID { get; set; }
         public int Quantity { get; set; }
-        public float Price { get; set; }
     }
 }
