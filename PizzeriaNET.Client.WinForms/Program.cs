@@ -4,8 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using PizzeriaNET.Client.Core;
 using PizzeriaNET.Client.Core.Services;
+using PizzeriaNET.Client.WinForms.Forms;
+using PizzeriaNET.Client.WinForms.Services;
 
 namespace PizzeriaNET.Client.WinForms
 {
@@ -40,9 +41,10 @@ namespace PizzeriaNET.Client.WinForms
                 builder.AddDebug();
             });
 
-            services.Configure<CoreConfig>(configuration.GetSection("CoreConfig"));
+            services.Configure<CoreConfig>(configuration.GetSection(nameof(CoreConfig)));
 
             services.AddSingleton<MainForm>();
+            services.AddScoped<IViewModelService, ViewModelService>();
             services.AddScoped<ICommunicationService, CommunicationService>(provider =>
                 new CommunicationService(
                     provider.GetRequiredService<ILogger<CommunicationService>>(),
