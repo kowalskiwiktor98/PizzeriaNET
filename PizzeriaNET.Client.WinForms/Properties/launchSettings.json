@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PizzeriaNET.Client.WinForms": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false
+    }
+  }
+}
