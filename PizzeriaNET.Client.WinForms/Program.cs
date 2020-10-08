@@ -45,6 +45,7 @@ namespace PizzeriaNET.Client.WinForms
 
             services.AddSingleton<MainForm>();
             services.AddScoped<PlaceOrderForm>();
+            services.AddScoped<OrderHistoryForm>();
             services.AddScoped<IViewModelService, ViewModelService>();
             services.AddScoped<ICommunicationService, CommunicationService>(provider =>
                 new CommunicationService(
