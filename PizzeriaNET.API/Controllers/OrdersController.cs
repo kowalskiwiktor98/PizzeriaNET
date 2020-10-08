@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using PizzeriaNET.API.Database;
 using PizzeriaNET.API.Models;
+using PizzeriaNET.API.Services;
 
 namespace PizzeriaNET.API.Controllers
 {
@@ -17,11 +18,13 @@ namespace PizzeriaNET.API.Controllers
     {
         private readonly ILogger<OrdersController> _logger;
         private readonly IDatabaseHelper _databaseHelper;
+        private readonly INotificationService _notificationService;
 
-        public OrdersController(ILogger<OrdersController> logger, IDatabaseHelper databaseHelper)
+        public OrdersController(ILogger<OrdersController> logger, IDatabaseHelper databaseHelper, INotificationService notificationService)
         {
             _logger = logger;
             _databaseHelper = databaseHelper;
+            _notificationService = notificationService;
         }
 
         [HttpPost]
@@ -35,7 +38,7 @@ namespace PizzeriaNET.API.Controllers
                 return BadRequest("Bad Request: Email is empty");
             }
             await _databaseHelper.InsertOrder(placeOrderRequest);
-            
+            await _notificationService.SendConfirmEmail(placeOrderRequest.Email);
             return Ok();
         }
 

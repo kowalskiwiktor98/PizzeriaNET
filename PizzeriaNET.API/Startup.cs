@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PizzeriaNET.API.Database;
+using PizzeriaNET.API.Services;
 
 namespace PizzeriaNET.API
 {
@@ -28,6 +29,7 @@ namespace PizzeriaNET.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDatabaseHelper, DatabaseHelper>();
+            services.AddScoped<INotificationService, NotificationService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
