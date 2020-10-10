@@ -46,7 +46,40 @@ namespace PizzeriaNET.API.Controllers
         [Route("GetOrderHistory")]
         public async Task<ActionResult> GetOrderHistory([FromQuery] string email)
         {
-            var orderHistory = await _databaseHelper.SelectOrderHistory(email);
+            var orderHistory = new List<OrderHistory>();
+            _logger.LogInformation("GetOrderHistory request");
+            var orderHistoryEntries = await _databaseHelper.SelectOrderHistory(email);
+
+            foreach (var entry in orderHistoryEntries)
+            {
+                var index = orderHistory.FindIndex(item => item.ID == entry.OrderID);
+                if (index < 0)
+                {
+                    orderHistory.Add(new OrderHistory()
+                    {
+                        ID = entry.OrderID,
+                        Date = entry.Date,
+                        Comment = entry.Comment,
+                        OrderItems = new List<OrderHistoryItem>
+                        {
+                            new OrderHistoryItem()
+                            {
+                                Name = entry.Item,
+                                Quantity = entry.Quantity,
+                                Price = entry.Price
+                            }
+                        }
+                    });
+
+                }
+                else orderHistory[index].OrderItems.Add(new OrderHistoryItem()
+                {
+                    Name = entry.Item,
+                    Quantity = entry.Quantity,
+                    Price = entry.Price
+                });
+            }
+
             return Ok(orderHistory);
         }
     }

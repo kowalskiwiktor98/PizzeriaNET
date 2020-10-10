@@ -8,6 +8,6 @@ namespace PizzeriaNET.API.Database
     {
         public Task<IEnumerable<MenuItems>> GetMenuItems();
         public Task InsertOrder(PlaceOrderRequest placeOrderRequest);
-        public Task<IEnumerable<OrderHistoryEntry>> SelectOrderHistory(string email);
+        public Task<IEnumerable<OrderHistoryDB>> SelectOrderHistory(string email);
     }
 }

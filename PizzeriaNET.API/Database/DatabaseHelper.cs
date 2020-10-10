@@ -98,10 +98,10 @@ namespace PizzeriaNET.API.Database
             }
         }
 
-        public async Task<IEnumerable<OrderHistoryEntry>> SelectOrderHistory(string email)
+        public async Task<IEnumerable<OrderHistoryDB>> SelectOrderHistory(string email)
         {
             _logger.LogInformation("Begin SelectOrderHistory");
-            var orderHistory = new List<OrderHistoryEntry>();
+            var orderHistory = new List<OrderHistoryDB>();
             try
             {
                 await using (var connection = new NpgsqlConnection(Environment.GetEnvironmentVariable("connectionString")))
@@ -112,15 +112,16 @@ namespace PizzeriaNET.API.Database
                     command.Parameters.AddWithValue("_email", NpgsqlTypes.NpgsqlDbType.Text, email);
                     await using (var reader = await command.ExecuteReaderAsync())
                     {
-                        //TODO: Add reading order history
                         while (await reader.ReadAsync())
                         {
-                            orderHistory.Add(new OrderHistoryEntry()
+                            orderHistory.Add(new OrderHistoryDB()
                             {
                                 OrderID = (int)reader[0],
-                                Item = (string)reader[1],
-                                Quantity = (int)reader[2],
-                                Price = Convert.ToSingle(reader[3])
+                                Date = (DateTime)reader[1],
+                                Comment = (string)reader[2],
+                                Item = (string)reader[3],
+                                Quantity = (int)reader[4],
+                                Price = Convert.ToSingle(reader[5])
                             });
                         }
                     }
