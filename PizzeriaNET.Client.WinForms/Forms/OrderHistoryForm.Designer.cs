@@ -32,7 +32,7 @@ namespace PizzeriaNET.Client.WinForms.Forms
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelOrderHistory = new System.Windows.Forms.Label();
             this.buttonCheckHistory = new System.Windows.Forms.Button();
-            this.comboBox = new System.Windows.Forms.ComboBox();
+            this.comboBoxOrders = new System.Windows.Forms.ComboBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBoxOrderDetails = new System.Windows.Forms.ListBox();
             this.labelOrderDetails = new System.Windows.Forms.Label();
@@ -72,15 +72,17 @@ namespace PizzeriaNET.Client.WinForms.Forms
             this.buttonCheckHistory.TabIndex = 2;
             this.buttonCheckHistory.Text = "Check";
             this.buttonCheckHistory.UseVisualStyleBackColor = true;
+            this.buttonCheckHistory.Click += new System.EventHandler(this.buttonCheckHistory_Click);
             // 
-            // comboBox
+            // comboBoxOrders
             // 
-            this.comboBox.FormattingEnabled = true;
-            this.comboBox.Location = new System.Drawing.Point(13, 169);
-            this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(366, 23);
-            this.comboBox.TabIndex = 3;
-            this.comboBox.Text = "Your orders";
+            this.comboBoxOrders.FormattingEnabled = true;
+            this.comboBoxOrders.Location = new System.Drawing.Point(13, 169);
+            this.comboBoxOrders.Name = "comboBoxOrders";
+            this.comboBoxOrders.Size = new System.Drawing.Size(366, 23);
+            this.comboBoxOrders.TabIndex = 3;
+            this.comboBoxOrders.Text = "Your orders";
+            this.comboBoxOrders.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrders_SelectionChanged);
             // 
             // progressBar
             // 
@@ -123,11 +125,12 @@ namespace PizzeriaNET.Client.WinForms.Forms
             this.Controls.Add(this.labelOrderDetails);
             this.Controls.Add(this.listBoxOrderDetails);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.comboBox);
+            this.Controls.Add(this.comboBoxOrders);
             this.Controls.Add(this.buttonCheckHistory);
             this.Controls.Add(this.labelOrderHistory);
             this.Controls.Add(this.textBox1);
             this.Name = "OrderHistoryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OrderHistoryForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -139,7 +142,7 @@ namespace PizzeriaNET.Client.WinForms.Forms
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label labelOrderHistory;
         private System.Windows.Forms.Button buttonCheckHistory;
-        private System.Windows.Forms.ComboBox comboBox;
+        private System.Windows.Forms.ComboBox comboBoxOrders;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ListBox listBoxOrderDetails;
         private System.Windows.Forms.Label labelOrderDetails;

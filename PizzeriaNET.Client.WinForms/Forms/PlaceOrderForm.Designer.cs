@@ -30,25 +30,30 @@ namespace PizzeriaNET.Client.WinForms.Forms
         private void InitializeComponent()
         {
             this.labelPlaceOrder = new System.Windows.Forms.Label();
-            this.labelMainDish = new System.Windows.Forms.Label();
+            this.labelSelect = new System.Windows.Forms.Label();
             this.groupBoxPlaceOrder = new System.Windows.Forms.GroupBox();
-            this.labelComment = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonAddOrderItem = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.labelQuantity = new System.Windows.Forms.Label();
-            this.comboBoxSideDish = new System.Windows.Forms.ComboBox();
-            this.labelSideDish = new System.Windows.Forms.Label();
-            this.comboBoxMainDish = new System.Windows.Forms.ComboBox();
-            this.labelEmail = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBoxSelectOrder = new System.Windows.Forms.GroupBox();
-            this.buttonPlaceOrder = new System.Windows.Forms.Button();
+            this.textBoxTotalPrice = new System.Windows.Forms.TextBox();
             this.labelTotalPrice = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.buttonPlaceOrder = new System.Windows.Forms.Button();
+            this.groupBoxSelectOrder = new System.Windows.Forms.GroupBox();
+            this.textBoxAdditionPrice = new System.Windows.Forms.TextBox();
+            this.labelAddidtionPrice = new System.Windows.Forms.Label();
+            this.textBoxMainPrice = new System.Windows.Forms.TextBox();
+            this.labelMainPrice = new System.Windows.Forms.Label();
+            this.comboBoxMainDish = new System.Windows.Forms.ComboBox();
+            this.labelAddidion = new System.Windows.Forms.Label();
+            this.comboBoxSideDish = new System.Windows.Forms.ComboBox();
+            this.labelQuantity = new System.Windows.Forms.Label();
+            this.buttonAddOrderItem = new System.Windows.Forms.Button();
+            this.numericUpDownQuantity = new System.Windows.Forms.NumericUpDown();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelComment = new System.Windows.Forms.Label();
+            this.textBoxComment = new System.Windows.Forms.TextBox();
+            this.checkBoxNotification = new System.Windows.Forms.CheckBox();
             this.groupBoxPlaceOrder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBoxSelectOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // labelPlaceOrder
@@ -63,150 +68,43 @@ namespace PizzeriaNET.Client.WinForms.Forms
             this.labelPlaceOrder.Text = "Place Your Order";
             this.labelPlaceOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelMainDish
+            // labelSelect
             // 
-            this.labelMainDish.AutoSize = true;
-            this.labelMainDish.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelMainDish.Location = new System.Drawing.Point(6, 19);
-            this.labelMainDish.Name = "labelMainDish";
-            this.labelMainDish.Size = new System.Drawing.Size(108, 30);
-            this.labelMainDish.TabIndex = 1;
-            this.labelMainDish.Text = "Main Dish";
+            this.labelSelect.AutoSize = true;
+            this.labelSelect.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSelect.Location = new System.Drawing.Point(6, 19);
+            this.labelSelect.Name = "labelSelect";
+            this.labelSelect.Size = new System.Drawing.Size(71, 30);
+            this.labelSelect.TabIndex = 1;
+            this.labelSelect.Text = "Select";
             // 
             // groupBoxPlaceOrder
             // 
             this.groupBoxPlaceOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxPlaceOrder.Controls.Add(this.textBox3);
+            this.groupBoxPlaceOrder.Controls.Add(this.checkBoxNotification);
+            this.groupBoxPlaceOrder.Controls.Add(this.textBoxTotalPrice);
             this.groupBoxPlaceOrder.Controls.Add(this.labelTotalPrice);
             this.groupBoxPlaceOrder.Controls.Add(this.buttonPlaceOrder);
             this.groupBoxPlaceOrder.Controls.Add(this.groupBoxSelectOrder);
-            this.groupBoxPlaceOrder.Controls.Add(this.textBox2);
+            this.groupBoxPlaceOrder.Controls.Add(this.textBoxEmail);
             this.groupBoxPlaceOrder.Controls.Add(this.labelEmail);
             this.groupBoxPlaceOrder.Controls.Add(this.labelComment);
-            this.groupBoxPlaceOrder.Controls.Add(this.textBox1);
+            this.groupBoxPlaceOrder.Controls.Add(this.textBoxComment);
             this.groupBoxPlaceOrder.Location = new System.Drawing.Point(12, 59);
             this.groupBoxPlaceOrder.Name = "groupBoxPlaceOrder";
             this.groupBoxPlaceOrder.Size = new System.Drawing.Size(531, 379);
             this.groupBoxPlaceOrder.TabIndex = 2;
             this.groupBoxPlaceOrder.TabStop = false;
             // 
-            // labelComment
+            // textBoxTotalPrice
             // 
-            this.labelComment.AutoSize = true;
-            this.labelComment.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelComment.Location = new System.Drawing.Point(6, 240);
-            this.labelComment.Name = "labelComment";
-            this.labelComment.Size = new System.Drawing.Size(109, 30);
-            this.labelComment.TabIndex = 9;
-            this.labelComment.Text = "Comment";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(120, 247);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 126);
-            this.textBox1.TabIndex = 8;
-            // 
-            // buttonAddOrderItem
-            // 
-            this.buttonAddOrderItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonAddOrderItem.Location = new System.Drawing.Point(358, 104);
-            this.buttonAddOrderItem.Name = "buttonAddOrderItem";
-            this.buttonAddOrderItem.Size = new System.Drawing.Size(148, 44);
-            this.buttonAddOrderItem.TabIndex = 7;
-            this.buttonAddOrderItem.Text = "Add";
-            this.buttonAddOrderItem.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(120, 125);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(121, 23);
-            this.numericUpDown1.TabIndex = 6;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelQuantity
-            // 
-            this.labelQuantity.AutoSize = true;
-            this.labelQuantity.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelQuantity.Location = new System.Drawing.Point(6, 119);
-            this.labelQuantity.Name = "labelQuantity";
-            this.labelQuantity.Size = new System.Drawing.Size(95, 30);
-            this.labelQuantity.TabIndex = 5;
-            this.labelQuantity.Text = "Quantity";
-            // 
-            // comboBoxSideDish
-            // 
-            this.comboBoxSideDish.FormattingEnabled = true;
-            this.comboBoxSideDish.Location = new System.Drawing.Point(120, 77);
-            this.comboBoxSideDish.Name = "comboBoxSideDish";
-            this.comboBoxSideDish.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxSideDish.TabIndex = 4;
-            // 
-            // labelSideDish
-            // 
-            this.labelSideDish.AutoSize = true;
-            this.labelSideDish.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelSideDish.Location = new System.Drawing.Point(6, 70);
-            this.labelSideDish.Name = "labelSideDish";
-            this.labelSideDish.Size = new System.Drawing.Size(102, 30);
-            this.labelSideDish.TabIndex = 3;
-            this.labelSideDish.Text = "Side Dish";
-            // 
-            // comboBoxMainDish
-            // 
-            this.comboBoxMainDish.FormattingEnabled = true;
-            this.comboBoxMainDish.Location = new System.Drawing.Point(120, 26);
-            this.comboBoxMainDish.Name = "comboBoxMainDish";
-            this.comboBoxMainDish.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxMainDish.TabIndex = 2;
-            // 
-            // labelEmail
-            // 
-            this.labelEmail.AutoSize = true;
-            this.labelEmail.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEmail.Location = new System.Drawing.Point(6, 186);
-            this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(64, 30);
-            this.labelEmail.TabIndex = 10;
-            this.labelEmail.Text = "Email";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(120, 187);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(180, 29);
-            this.textBox2.TabIndex = 11;
-            // 
-            // groupBoxSelectOrder
-            // 
-            this.groupBoxSelectOrder.Controls.Add(this.labelMainDish);
-            this.groupBoxSelectOrder.Controls.Add(this.comboBoxMainDish);
-            this.groupBoxSelectOrder.Controls.Add(this.labelSideDish);
-            this.groupBoxSelectOrder.Controls.Add(this.comboBoxSideDish);
-            this.groupBoxSelectOrder.Controls.Add(this.labelQuantity);
-            this.groupBoxSelectOrder.Controls.Add(this.buttonAddOrderItem);
-            this.groupBoxSelectOrder.Controls.Add(this.numericUpDown1);
-            this.groupBoxSelectOrder.Location = new System.Drawing.Point(6, 22);
-            this.groupBoxSelectOrder.Name = "groupBoxSelectOrder";
-            this.groupBoxSelectOrder.Size = new System.Drawing.Size(519, 159);
-            this.groupBoxSelectOrder.TabIndex = 12;
-            this.groupBoxSelectOrder.TabStop = false;
-            // 
-            // buttonPlaceOrder
-            // 
-            this.buttonPlaceOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonPlaceOrder.Location = new System.Drawing.Point(306, 329);
-            this.buttonPlaceOrder.Name = "buttonPlaceOrder";
-            this.buttonPlaceOrder.Size = new System.Drawing.Size(219, 44);
-            this.buttonPlaceOrder.TabIndex = 13;
-            this.buttonPlaceOrder.Text = "Place Order";
-            this.buttonPlaceOrder.UseVisualStyleBackColor = true;
+            this.textBoxTotalPrice.Location = new System.Drawing.Point(425, 300);
+            this.textBoxTotalPrice.Name = "textBoxTotalPrice";
+            this.textBoxTotalPrice.ReadOnly = true;
+            this.textBoxTotalPrice.Size = new System.Drawing.Size(100, 23);
+            this.textBoxTotalPrice.TabIndex = 15;
             // 
             // labelTotalPrice
             // 
@@ -218,13 +116,176 @@ namespace PizzeriaNET.Client.WinForms.Forms
             this.labelTotalPrice.TabIndex = 14;
             this.labelTotalPrice.Text = "Total Price:";
             // 
-            // textBox3
+            // buttonPlaceOrder
             // 
-            this.textBox3.Location = new System.Drawing.Point(425, 300);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 15;
+            this.buttonPlaceOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonPlaceOrder.Location = new System.Drawing.Point(306, 329);
+            this.buttonPlaceOrder.Name = "buttonPlaceOrder";
+            this.buttonPlaceOrder.Size = new System.Drawing.Size(219, 44);
+            this.buttonPlaceOrder.TabIndex = 13;
+            this.buttonPlaceOrder.Text = "Place Order";
+            this.buttonPlaceOrder.UseVisualStyleBackColor = true;
+            this.buttonPlaceOrder.Click += new System.EventHandler(this.buttonPlaceOrder_Click);
+            // 
+            // groupBoxSelectOrder
+            // 
+            this.groupBoxSelectOrder.Controls.Add(this.textBoxAdditionPrice);
+            this.groupBoxSelectOrder.Controls.Add(this.labelAddidtionPrice);
+            this.groupBoxSelectOrder.Controls.Add(this.textBoxMainPrice);
+            this.groupBoxSelectOrder.Controls.Add(this.labelSelect);
+            this.groupBoxSelectOrder.Controls.Add(this.labelMainPrice);
+            this.groupBoxSelectOrder.Controls.Add(this.comboBoxMainDish);
+            this.groupBoxSelectOrder.Controls.Add(this.labelAddidion);
+            this.groupBoxSelectOrder.Controls.Add(this.comboBoxSideDish);
+            this.groupBoxSelectOrder.Controls.Add(this.labelQuantity);
+            this.groupBoxSelectOrder.Controls.Add(this.buttonAddOrderItem);
+            this.groupBoxSelectOrder.Controls.Add(this.numericUpDownQuantity);
+            this.groupBoxSelectOrder.Location = new System.Drawing.Point(6, 22);
+            this.groupBoxSelectOrder.Name = "groupBoxSelectOrder";
+            this.groupBoxSelectOrder.Size = new System.Drawing.Size(519, 159);
+            this.groupBoxSelectOrder.TabIndex = 12;
+            this.groupBoxSelectOrder.TabStop = false;
+            // 
+            // textBoxAdditionPrice
+            // 
+            this.textBoxAdditionPrice.Location = new System.Drawing.Point(449, 71);
+            this.textBoxAdditionPrice.Name = "textBoxAdditionPrice";
+            this.textBoxAdditionPrice.ReadOnly = true;
+            this.textBoxAdditionPrice.Size = new System.Drawing.Size(57, 23);
+            this.textBoxAdditionPrice.TabIndex = 19;
+            // 
+            // labelAddidtionPrice
+            // 
+            this.labelAddidtionPrice.AutoSize = true;
+            this.labelAddidtionPrice.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelAddidtionPrice.Location = new System.Drawing.Point(378, 68);
+            this.labelAddidtionPrice.Name = "labelAddidtionPrice";
+            this.labelAddidtionPrice.Size = new System.Drawing.Size(65, 30);
+            this.labelAddidtionPrice.TabIndex = 18;
+            this.labelAddidtionPrice.Text = "Price:";
+            // 
+            // textBoxMainPrice
+            // 
+            this.textBoxMainPrice.Location = new System.Drawing.Point(449, 22);
+            this.textBoxMainPrice.Name = "textBoxMainPrice";
+            this.textBoxMainPrice.ReadOnly = true;
+            this.textBoxMainPrice.Size = new System.Drawing.Size(57, 23);
+            this.textBoxMainPrice.TabIndex = 17;
+            // 
+            // labelMainPrice
+            // 
+            this.labelMainPrice.AutoSize = true;
+            this.labelMainPrice.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelMainPrice.Location = new System.Drawing.Point(378, 19);
+            this.labelMainPrice.Name = "labelMainPrice";
+            this.labelMainPrice.Size = new System.Drawing.Size(65, 30);
+            this.labelMainPrice.TabIndex = 16;
+            this.labelMainPrice.Text = "Price:";
+            // 
+            // comboBoxMainDish
+            // 
+            this.comboBoxMainDish.FormattingEnabled = true;
+            this.comboBoxMainDish.Location = new System.Drawing.Point(120, 26);
+            this.comboBoxMainDish.Name = "comboBoxMainDish";
+            this.comboBoxMainDish.Size = new System.Drawing.Size(174, 23);
+            this.comboBoxMainDish.TabIndex = 2;
+            this.comboBoxMainDish.SelectedIndexChanged += new System.EventHandler(this.comboBoxMainDish_SelectedIndexChanged);
+            // 
+            // labelAddidion
+            // 
+            this.labelAddidion.AutoSize = true;
+            this.labelAddidion.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelAddidion.Location = new System.Drawing.Point(6, 70);
+            this.labelAddidion.Name = "labelAddidion";
+            this.labelAddidion.Size = new System.Drawing.Size(95, 30);
+            this.labelAddidion.TabIndex = 3;
+            this.labelAddidion.Text = "Addition";
+            // 
+            // comboBoxSideDish
+            // 
+            this.comboBoxSideDish.FormattingEnabled = true;
+            this.comboBoxSideDish.Location = new System.Drawing.Point(120, 77);
+            this.comboBoxSideDish.Name = "comboBoxSideDish";
+            this.comboBoxSideDish.Size = new System.Drawing.Size(174, 23);
+            this.comboBoxSideDish.TabIndex = 4;
+            this.comboBoxSideDish.SelectedIndexChanged += new System.EventHandler(this.comboBoxSideDish_SelectedIndexChanged);
+            // 
+            // labelQuantity
+            // 
+            this.labelQuantity.AutoSize = true;
+            this.labelQuantity.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelQuantity.Location = new System.Drawing.Point(6, 119);
+            this.labelQuantity.Name = "labelQuantity";
+            this.labelQuantity.Size = new System.Drawing.Size(95, 30);
+            this.labelQuantity.TabIndex = 5;
+            this.labelQuantity.Text = "Quantity";
+            // 
+            // buttonAddOrderItem
+            // 
+            this.buttonAddOrderItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonAddOrderItem.Location = new System.Drawing.Point(358, 104);
+            this.buttonAddOrderItem.Name = "buttonAddOrderItem";
+            this.buttonAddOrderItem.Size = new System.Drawing.Size(148, 44);
+            this.buttonAddOrderItem.TabIndex = 7;
+            this.buttonAddOrderItem.Text = "Add";
+            this.buttonAddOrderItem.UseVisualStyleBackColor = true;
+            this.buttonAddOrderItem.Click += new System.EventHandler(this.buttonAddOrderItem_Click);
+            // 
+            // numericUpDownQuantity
+            // 
+            this.numericUpDownQuantity.Location = new System.Drawing.Point(120, 125);
+            this.numericUpDownQuantity.Name = "numericUpDownQuantity";
+            this.numericUpDownQuantity.Size = new System.Drawing.Size(75, 23);
+            this.numericUpDownQuantity.TabIndex = 6;
+            this.numericUpDownQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxEmail.Location = new System.Drawing.Point(120, 187);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(180, 29);
+            this.textBoxEmail.TabIndex = 11;
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelEmail.Location = new System.Drawing.Point(6, 186);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(64, 30);
+            this.labelEmail.TabIndex = 10;
+            this.labelEmail.Text = "Email";
+            // 
+            // labelComment
+            // 
+            this.labelComment.AutoSize = true;
+            this.labelComment.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelComment.Location = new System.Drawing.Point(6, 240);
+            this.labelComment.Name = "labelComment";
+            this.labelComment.Size = new System.Drawing.Size(109, 30);
+            this.labelComment.TabIndex = 9;
+            this.labelComment.Text = "Comment";
+            // 
+            // textBoxComment
+            // 
+            this.textBoxComment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxComment.Location = new System.Drawing.Point(120, 247);
+            this.textBoxComment.Multiline = true;
+            this.textBoxComment.Name = "textBoxComment";
+            this.textBoxComment.Size = new System.Drawing.Size(180, 126);
+            this.textBoxComment.TabIndex = 8;
+            // 
+            // checkBoxNotification
+            // 
+            this.checkBoxNotification.AutoSize = true;
+            this.checkBoxNotification.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxNotification.Location = new System.Drawing.Point(306, 185);
+            this.checkBoxNotification.Name = "checkBoxNotification";
+            this.checkBoxNotification.Size = new System.Drawing.Size(198, 34);
+            this.checkBoxNotification.TabIndex = 17;
+            this.checkBoxNotification.Text = "Send Notification";
+            this.checkBoxNotification.UseVisualStyleBackColor = true;
             // 
             // PlaceOrderForm
             // 
@@ -236,11 +297,12 @@ namespace PizzeriaNET.Client.WinForms.Forms
             this.Name = "PlaceOrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PizzeriaNET";
+            this.Load += new System.EventHandler(this.PlaceOrderForm_Load);
             this.groupBoxPlaceOrder.ResumeLayout(false);
             this.groupBoxPlaceOrder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBoxSelectOrder.ResumeLayout(false);
             this.groupBoxSelectOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -248,21 +310,26 @@ namespace PizzeriaNET.Client.WinForms.Forms
         #endregion
 
         private System.Windows.Forms.Label labelPlaceOrder;
-        private System.Windows.Forms.Label labelMainDish;
+        private System.Windows.Forms.Label labelSelect;
         private System.Windows.Forms.GroupBox groupBoxPlaceOrder;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDownQuantity;
         private System.Windows.Forms.Label labelQuantity;
         private System.Windows.Forms.ComboBox comboBoxSideDish;
-        private System.Windows.Forms.Label labelSideDish;
+        private System.Windows.Forms.Label labelAddidion;
         private System.Windows.Forms.ComboBox comboBoxMainDish;
         private System.Windows.Forms.Label labelComment;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxComment;
         private System.Windows.Forms.Button buttonAddOrderItem;
         private System.Windows.Forms.Button buttonPlaceOrder;
         private System.Windows.Forms.GroupBox groupBoxSelectOrder;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Label labelEmail;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxTotalPrice;
         private System.Windows.Forms.Label labelTotalPrice;
+        private System.Windows.Forms.TextBox textBoxMainPrice;
+        private System.Windows.Forms.Label labelMainPrice;
+        private System.Windows.Forms.TextBox textBoxAdditionPrice;
+        private System.Windows.Forms.Label labelAddidtionPrice;
+        private System.Windows.Forms.CheckBox checkBoxNotification;
     }
 }
