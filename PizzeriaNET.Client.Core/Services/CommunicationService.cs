@@ -35,5 +35,42 @@ namespace PizzeriaNET.Client.Core.Services
             }
             return menuItems;
         }
+
+        public async Task<IEnumerable<OrderHistoryModel>> GetOrderHistory(string email)
+        {
+            _logger.LogInformation("Begin GetOrderHistory");
+            IEnumerable<OrderHistoryModel> orderHistory = new List<OrderHistoryModel>();
+
+            var client = new RestClient(_remoteAddress);
+            var request = new RestRequest("api/orders/getorderhistory", Method.GET);
+            request.AddQueryParameter("email", email);
+            try
+            {
+                var response = await client.ExecuteAsync<IEnumerable<OrderHistoryModel>>(request);
+                orderHistory = response.Data;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return orderHistory;
+        }
+
+        public async Task PlaceOrder(OrderModel order)
+        {
+            _logger.LogInformation("Begin PlaceOrder");
+            var client = new RestClient(_remoteAddress);
+            var request = new RestRequest("api/orders/placeorder", Method.POST);
+            request.AddJsonBody(order);
+            try
+            {
+                await client.ExecuteAsync(request);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+        }
     }
 }
