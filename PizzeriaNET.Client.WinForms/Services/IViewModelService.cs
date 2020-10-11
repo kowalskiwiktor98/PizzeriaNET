@@ -6,6 +6,8 @@ namespace PizzeriaNET.Client.WinForms.Services
 {
     public interface IViewModelService
     {
-        public Task<IEnumerable<DataGridMenuItem>> GetMenuItems();
+        public Task<IEnumerable<MenuItemFormModel>> GetMenuItems();
+        public Task<IEnumerable<OrderHistoryFormModel>> GetOrderHistory(string email);
+        public Task PlaceOrder(OrderFormModel order);
     }
 }

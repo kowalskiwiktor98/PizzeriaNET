@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using PizzeriaNET.Client.Core.Services;
+using PizzeriaNET.Client.Core.Models;
 using PizzeriaNET.Client.WinForms.Models;
 
 namespace PizzeriaNET.Client.WinForms.Services
@@ -17,14 +19,15 @@ namespace PizzeriaNET.Client.WinForms.Services
         {
             _communicationService = communicationService;
         }
-        public async Task<IEnumerable<DataGridMenuItem>> GetMenuItems()
+
+        public async Task<IEnumerable<MenuItemFormModel>> GetMenuItems()
         {
-            var dataGridMenuItems = new List<DataGridMenuItem>();
+            var dataGridMenuItems = new List<MenuItemFormModel>();
             var menuItems = await _communicationService.GetMenuItems();
 
             foreach (var item in menuItems)
             {
-                dataGridMenuItems.Add(new DataGridMenuItem()
+                dataGridMenuItems.Add(new MenuItemFormModel()
                 {
                     ID = item.ID,
                     Name = item.Name,
@@ -34,6 +37,44 @@ namespace PizzeriaNET.Client.WinForms.Services
             }
 
             return dataGridMenuItems;
+        }
+
+        public async Task<IEnumerable<OrderHistoryFormModel>> GetOrderHistory(string email)
+        {
+            var orderHistory = await _communicationService.GetOrderHistory(email);
+            var orderHistoryViewModel = new List<OrderHistoryFormModel>();
+
+            foreach (var order in orderHistory)
+            {
+                var orderItems = new List<OrderHistoryItemFormModel>();
+
+                foreach (var item in order.OrderItems)
+                {
+                    orderItems.Add(new OrderHistoryItemFormModel()
+                    {
+                        Name = item.Name,
+                        Quantity = item.Quantity,
+                        Price = item.Price
+                    });
+                }
+
+                orderHistoryViewModel.Add(new OrderHistoryFormModel()
+                {
+                    ID = order.ID,
+                    Date = order.Date,
+                    Comment = order.Comment,
+                    OrderItems = orderItems
+                });
+            }
+
+            return orderHistoryViewModel;
+        }
+
+        public async Task PlaceOrder(OrderFormModel orderFormModel)
+        {
+            var order = new OrderModel();
+
+            await _communicationService.PlaceOrder(order);
         }
     }
 }
