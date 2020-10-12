@@ -40,7 +40,29 @@ namespace PizzeriaNET.API.Controllers
 
             try
             {
-                await _databaseHelper.InsertOrder(placeOrderRequest);
+                var orderEntries = await _databaseHelper.InsertOrder(placeOrderRequest);
+                var orderEntryFirst = orderEntries.First();
+                var order = new OrderHistory()
+                {
+                    ID = orderEntryFirst.OrderID,
+                    Date = orderEntryFirst.Date,
+                    Comment = orderEntryFirst.Comment,
+                    OrderItems = new List<OrderHistoryItem>()
+                };
+                foreach (var entry in orderEntries)
+                {
+                    order.OrderItems.Add(new OrderHistoryItem()
+                    {
+                        Name = entry.Item,
+                        Quantity = entry.Quantity,
+                        Price = entry.Price
+                    });
+                }
+
+                if (placeOrderRequest.SendEmailNotification)
+                {
+                    await _notificationService.SendConfirmEmail(order, placeOrderRequest.Email);
+                }
             }
             catch (Exception e)
             {
@@ -48,10 +70,6 @@ namespace PizzeriaNET.API.Controllers
                 return StatusCode(500);
             }
 
-            if (placeOrderRequest.SendEmailNotification)
-            {
-                await _notificationService.SendConfirmEmail(placeOrderRequest.Email);
-            }
             return Ok();
         }
 

@@ -54,9 +54,10 @@ namespace PizzeriaNET.API.Database
             return menuItems;
         }
 
-        public async Task InsertOrder(PlaceOrderRequest placeOrderRequest)
+        public async Task<IEnumerable<OrderHistoryDB>> InsertOrder(PlaceOrderRequest placeOrderRequest)
         {
             _logger.LogInformation("Begin InsertOrder");
+            var newOrder = new List<OrderHistoryDB>();
             try
             {
                 await using (var connection = new NpgsqlConnection(Environment.GetEnvironmentVariable("connectionString")))
@@ -92,6 +93,27 @@ namespace PizzeriaNET.API.Database
                             await command.ExecuteNonQueryAsync();
                         }
                     }
+
+                    await using (var command = new NpgsqlCommand("selectinsertedorder", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("_id", NpgsqlTypes.NpgsqlDbType.Integer, newOrderID);
+                        await using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                newOrder.Add(new OrderHistoryDB()
+                                {
+                                    OrderID = (int)reader[0],
+                                    Date = (DateTime)reader[1],
+                                    Comment = (string)reader[2],
+                                    Item = (string)reader[3],
+                                    Quantity = (int)reader[4],
+                                    Price = Convert.ToSingle(reader[5])
+                                });
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -103,6 +125,8 @@ namespace PizzeriaNET.API.Database
                 }
                 _logger.LogError(ex.Message);
             }
+
+            return newOrder;
         }
 
         public async Task<IEnumerable<OrderHistoryDB>> SelectOrderHistory(string email)

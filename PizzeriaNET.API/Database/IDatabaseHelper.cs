@@ -7,7 +7,7 @@ namespace PizzeriaNET.API.Database
     public interface IDatabaseHelper
     {
         public Task<IEnumerable<MenuItems>> GetMenuItems();
-        public Task InsertOrder(PlaceOrderRequest placeOrderRequest);
+        public Task<IEnumerable<OrderHistoryDB>> InsertOrder(PlaceOrderRequest placeOrderRequest);
         public Task<IEnumerable<OrderHistoryDB>> SelectOrderHistory(string email);
     }
 }
