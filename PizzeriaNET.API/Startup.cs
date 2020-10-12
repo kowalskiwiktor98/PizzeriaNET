@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using PizzeriaNET.API.Database;
 using PizzeriaNET.API.Services;
 
@@ -59,6 +60,10 @@ namespace PizzeriaNET.API
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync($"Health Check at {DateTime.Now}");
+                });
                 endpoints.MapControllers();
             });
         }
