@@ -1,0 +1,56 @@
+﻿@page "/orderhistory"
+@using PizzeriaNET.Client.Web.Services
+@using PizzeriaNET.Client.Web.Models
+@inject IViewModelService _viewModelService
+
+<h1>Order History</h1>
+
+<input @bind="email" type="email" />
+<button @onclick="CheckHistory">Check</button>
+
+<div class="accordion" id="accordionExample">
+    @{
+        if (!string.IsNullOrWhiteSpace(email) && orderHistory.Any())
+        {
+
+            foreach (var order in orderHistory)
+            {
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <div class="oi oi-basket" />Order @order.ID at @order.Date
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            @foreach (var orderItem in order.OrderItems)
+                            {
+                                <div>
+                                    @orderItem.Name @orderItem.Quantity @orderItem.Price
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div>No orders found</div>
+        }
+    }
+</div>
+
+@code {
+    private string email { get; set; }
+    private IEnumerable<OrderHistoryWebModel> orderHistory = new List<OrderHistoryWebModel>();
+
+    private async Task CheckHistory()
+    {
+        orderHistory = await _viewModelService.GetOrderHistory(email);
+        StateHasChanged();
+    }
+}

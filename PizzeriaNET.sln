@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30516.212
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaNET.API", "PizzeriaNET.API\PizzeriaNET.API.csproj", "{25280693-9BF1-4D86-A1E7-31769D84F4EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaNET.Client.Core", "PizzeriaNET.Client.Core\PizzeriaNET.Client.Core.csproj", "{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaNET.Client.Core", "PizzeriaNET.Client.Core\PizzeriaNET.Client.Core.csproj", "{E739D3F2-EC7B-4179-A8E8-69E77ACDA4D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaNET.Client.WinForms", "PizzeriaNET.Client.WinForms\PizzeriaNET.Client.WinForms.csproj", "{0B66D1E0-D752-4671-B29C-A5785BE58497}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaNET.Client.WinForms", "PizzeriaNET.Client.WinForms\PizzeriaNET.Client.WinForms.csproj", "{0B66D1E0-D752-4671-B29C-A5785BE58497}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaNET.Client.Web", "PizzeriaNET.Client.Web\PizzeriaNET.Client.Web.csproj", "{00058801-72E6-44E2-AC9F-CC4A42F8E96A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,18 @@ Global
 		{0B66D1E0-D752-4671-B29C-A5785BE58497}.Release|x64.Build.0 = Release|Any CPU
 		{0B66D1E0-D752-4671-B29C-A5785BE58497}.Release|x86.ActiveCfg = Release|Any CPU
 		{0B66D1E0-D752-4671-B29C-A5785BE58497}.Release|x86.Build.0 = Release|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Debug|x64.Build.0 = Debug|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Debug|x86.Build.0 = Debug|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Release|x64.ActiveCfg = Release|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Release|x64.Build.0 = Release|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Release|x86.ActiveCfg = Release|Any CPU
+		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,43 @@
+﻿@page "/placeorder"
+
+@using PizzeriaNET.Client.Web.Services
+@using PizzeriaNET.Client.Web.Models
+@inject IViewModelService _viewModelService
+
+<h1>Place Order</h1>
+
+@{
+    if (!menuRequestDone && menuItems is null || !menuItems.Any())
+    {
+        <p>Something went wrong</p>
+    }
+    else
+    {
+        <select onselect="MainSelected">
+            @foreach (var item in menuItems)
+            {
+                <option>
+                    @item.Name
+                </option>
+            }
+        </select>
+    }
+}
+
+
+
+@code {
+    private bool menuRequestDone = false;
+    private IEnumerable<MenuItemWebModel> menuItems;
+
+    protected override async Task OnInitializedAsync()
+    {
+        menuItems = await _viewModelService.GetMenuItems();
+        menuRequestDone = true;
+    }
+
+    private void MainSelected()
+    {
+
+    }
+}
