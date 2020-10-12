@@ -37,8 +37,13 @@ namespace PizzeriaNET.API.Controllers
                 _logger.LogWarning("Bad Request: Email is empty");
                 return BadRequest("Bad Request: Email is empty");
             }
+
             await _databaseHelper.InsertOrder(placeOrderRequest);
-            await _notificationService.SendConfirmEmail(placeOrderRequest.Email);
+
+            if(placeOrderRequest.SendEmailNotification)
+            {
+                await _notificationService.SendConfirmEmail(placeOrderRequest.Email);
+            }
             return Ok();
         }
 
