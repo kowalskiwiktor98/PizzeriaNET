@@ -9,7 +9,7 @@ namespace PizzeriaNET.Client.Core.Models
 {
     public class OrderModel
     {
-        public bool SendNotification { get; set; }
+        public bool SendEmailNotification { get; set; }
         public string Email { get; set; }
         public string Comment { get; set; }
         public DateTime OrderTime { get; set; }
