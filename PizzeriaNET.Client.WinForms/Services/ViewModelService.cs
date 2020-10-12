@@ -8,6 +8,7 @@ using System.Windows.Forms.Design;
 using PizzeriaNET.Client.Core.Services;
 using PizzeriaNET.Client.Core.Models;
 using PizzeriaNET.Client.WinForms.Models;
+using OrderItemModel = PizzeriaNET.Client.Core.Models.OrderItemModel;
 
 namespace PizzeriaNET.Client.WinForms.Services
 {
@@ -72,7 +73,25 @@ namespace PizzeriaNET.Client.WinForms.Services
 
         public async Task PlaceOrder(OrderFormModel orderFormModel)
         {
-            var order = new OrderModel();
+            var orderedItems = new List<OrderItemModel>();
+
+            foreach (var item in orderFormModel.OrderedItems)
+            {
+                orderedItems.Add(new OrderItemModel()
+                {
+                    ItemID = item.ItemID,
+                    Quantity = item.Quantity
+                });
+            }
+
+            var order = new OrderModel()
+            {
+                SendEmailNotification = orderFormModel.SendNotification,
+                Email = orderFormModel.Email,
+                Comment = orderFormModel.Comment,
+                OrderTime = orderFormModel.OrderTime,
+                OrderedItems = orderedItems
+            };
 
             await _communicationService.PlaceOrder(order);
         }

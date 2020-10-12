@@ -51,16 +51,23 @@ namespace PizzeriaNET.Client.WinForms.Forms
 
         private void buttonAddOrderItem_Click(object sender, EventArgs e)
         {
-            orderItems.Add(new OrderItemModel()
+            if (comboBoxMainDish.SelectedItem is not null && (int)numericUpDownQuantity.Value > 0)
             {
-                ItemID = ((MenuItemFormModel)comboBoxMainDish.SelectedItem).ID,
-                Quantity = (int)numericUpDownQuantity.Value
-            });
-            orderItems.Add(new OrderItemModel()
+                orderItems.Add(new OrderItemModel()
+                {
+                    ItemID = ((MenuItemFormModel)comboBoxMainDish.SelectedItem).ID,
+                    Quantity = (int)numericUpDownQuantity.Value
+                });
+            }
+
+            if (comboBoxSideDish.SelectedItem is not null && (int)numericUpDownQuantity.Value > 0)
             {
-                ItemID = ((MenuItemFormModel)comboBoxSideDish.SelectedItem).ID,
-                Quantity = (int)numericUpDownQuantity.Value
-            });
+                orderItems.Add(new OrderItemModel()
+                {
+                    ItemID = ((MenuItemFormModel)comboBoxSideDish.SelectedItem).ID,
+                    Quantity = (int)numericUpDownQuantity.Value
+                });
+            }
             textBoxTotalPrice.Text = orderItems.Sum(item => menuItems.FirstOrDefault(fromMenu => fromMenu.ID == item.ItemID).Price * item.Quantity).ToString();
         }
 
@@ -79,12 +86,15 @@ namespace PizzeriaNET.Client.WinForms.Forms
 
         private void comboBoxMainDish_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selected = (MenuItemFormModel) comboBoxMainDish.SelectedItem;
+            var selected = (MenuItemFormModel)comboBoxMainDish.SelectedItem;
             textBoxMainPrice.Text = selected.Price.ToString() + " PLN";
-            var availableAdditions = menuItems.Select(item => item)
-                .Where(item => item.Category == this.additions[selected.Category]).ToArray();
             comboBoxSideDish.Items.Clear();
-            comboBoxSideDish.Items.AddRange(availableAdditions);
+            if (additions.TryGetValue(selected.Category, out string category))
+            {
+                var availableAdditions = menuItems.Select(item => item)
+                    .Where(item => item.Category == category).ToArray();
+                comboBoxSideDish.Items.AddRange(availableAdditions);
+            }
         }
 
         private void comboBoxSideDish_SelectedIndexChanged(object sender, EventArgs e)
