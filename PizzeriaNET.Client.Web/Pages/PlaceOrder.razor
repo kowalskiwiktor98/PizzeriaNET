@@ -2,42 +2,160 @@
 
 @using PizzeriaNET.Client.Web.Services
 @using PizzeriaNET.Client.Web.Models
+@using System.Net.Mail
+@using System.Linq
 @inject IViewModelService _viewModelService
 
 <h1>Place Order</h1>
 
 @{
-    if (!menuRequestDone && menuItems is null || !menuItems.Any())
+    if (menuRequestDone && !mainMenuItems.Any())
     {
         <p>Something went wrong</p>
     }
     else
     {
-        <select onselect="MainSelected">
-            @foreach (var item in menuItems)
+        <select @onchange="@selectedMainChanged">
+            @foreach (var item in mainMenuItems)
             {
                 <option>
-                    @item.Name
+                    @item
                 </option>
             }
         </select>
+        <br />
+        <select @onchange="@selectedSideChanged">
+            @foreach (var item in sideMenuItemsShown)
+            {
+                <option>
+                    @item
+                </option>
+            }
+        </select>
+        <br />
+        <input type="number" @bind="@quantity" />
+        <button @onclick="@addItem">Add Item</button>
+        <br />
+        <br />
+        <input placeholder="email" type="email" @bind="@email" />
+        <input value="false" type="checkbox" @bind="@sendEmailNotification">
+        <label>Send confirmation email</label>
+        <br />
+        <input placeholder="comment" type="text" @bind="@comment">
+        <br />
+        <label>Total price: @totalPrice</label>
+        <button @onclick="@submitOrder">Submit Order</button>
+        <br />
+        <br />
+        <div>
+            <dl>
+                @foreach (var item in orderItems)
+                {
+                    var menuItem = allMenuItems.First(x => x.ID == item.ItemID);
+                    <li>
+                        [@menuItem.Category] @menuItem.Name - @item.Quantity * @menuItem.Price
+                    </li>
+                }
+            </dl>
+        </div>
     }
 }
 
 
 
 @code {
+    private float totalPrice;
+    private int quantity;
     private bool menuRequestDone = false;
-    private IEnumerable<MenuItemWebModel> menuItems;
+    private string email;
+    private string comment;
+    private bool sendEmailNotification;
+    private List<OrderItemModel> orderItems = new List<OrderItemModel>();
+    private MenuItemWebModel selectedMainName;
+    private MenuItemWebModel selectedSideName;
+    private List<MenuItemWebModel> allMenuItems = new List<MenuItemWebModel>();
+    private List<MenuItemWebModel> mainMenuItems = new List<MenuItemWebModel>();
+    private List<MenuItemWebModel> sideMenuItems = new List<MenuItemWebModel>();
+    private List<MenuItemWebModel> sideMenuItemsShown = new List<MenuItemWebModel>();
+
+    #region Define Categories
+    private string[] mainDishes =
+    {
+        "Pizza",
+        "Main Dish",
+        "Soup",
+        "Drinks"
+    };
+
+    private Dictionary<string, string> additions = new Dictionary<string, string>()
+{
+        {"Pizza", "Pizza Addons"},
+        {"Main Dish", "Side Dish"}
+    };
+    #endregion
 
     protected override async Task OnInitializedAsync()
     {
-        menuItems = await _viewModelService.GetMenuItems();
+        var menuItems = await _viewModelService.GetMenuItems();
         menuRequestDone = true;
+
+        foreach (var item in menuItems)
+        {
+            allMenuItems.Add(item);
+            if (mainDishes.Contains(item.Category)) mainMenuItems.Add(item);
+            else sideMenuItems.Add(item);
+        }
+        selectedMainName = mainMenuItems.FirstOrDefault();
+        selectedMainChanged(new ChangeEventArgs() { Value = selectedMainName.ToString() });
     }
 
-    private void MainSelected()
+    private void selectedMainChanged(ChangeEventArgs e)
     {
+        sideMenuItemsShown = new List<MenuItemWebModel>();
+        selectedMainName = mainMenuItems.FirstOrDefault(item => item.ToString() == (string)e.Value);
 
+        if (additions.TryGetValue(selectedMainName.Category, out string category))
+        {
+            foreach (var item in sideMenuItems)
+            {
+                if (item.Category == category) sideMenuItemsShown.Add(item);
+            }
+        }
+        selectedSideChanged(new ChangeEventArgs(){Value = sideMenuItemsShown.First().ToString()});
+        StateHasChanged();
+    }
+
+    private void selectedSideChanged(ChangeEventArgs e)
+    {
+        selectedSideName = sideMenuItemsShown.FirstOrDefault(item => item.ToString() == (string)e.Value);
+    }
+
+    private void addItem()
+    {
+        orderItems.Add(new OrderItemModel()
+        {
+            ItemID = selectedMainName.ID,
+            Quantity = quantity
+        });
+        if (selectedSideName is not null) orderItems.Add(new OrderItemModel()
+        {
+            ItemID = selectedSideName.ID,
+            Quantity = quantity
+        });
+
+        totalPrice = (float)orderItems.Sum(item => allMenuItems.FirstOrDefault(fromMenu => fromMenu.ID == item.ItemID).Price * item.Quantity);
+    }
+
+    private async Task submitOrder()
+    {
+        var order = new OrderWebModel()
+        {
+            SendEmailNotification = sendEmailNotification,
+            Email = email,
+            Comment = comment,
+            OrderTime = DateTime.Now,
+            OrderedItems = orderItems
+        };
+        await _viewModelService.PlaceOrder(order);
     }
 }

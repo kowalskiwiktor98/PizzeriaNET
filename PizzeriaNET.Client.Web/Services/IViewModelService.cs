@@ -8,5 +8,6 @@ namespace PizzeriaNET.Client.Web.Services
     {
         public Task<IEnumerable<OrderHistoryWebModel>> GetOrderHistory(string email);
         public Task<IEnumerable<MenuItemWebModel>> GetMenuItems();
+        public Task PlaceOrder(OrderWebModel order);
     }
 }

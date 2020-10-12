@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using PizzeriaNET.Client.Core.Models;
 using PizzeriaNET.Client.Core.Services;
 using PizzeriaNET.Client.Web.Models;
+using OrderItemModel = PizzeriaNET.Client.Web.Models.OrderItemModel;
 
 namespace PizzeriaNET.Client.Web.Services
 {
@@ -66,6 +68,31 @@ namespace PizzeriaNET.Client.Web.Services
             }
 
             return webMenuItems;
+        }
+
+        public async Task PlaceOrder(OrderWebModel orderWebModel)
+        {
+            var orderedItems = new List<Core.Models.OrderItemModel>();
+
+            foreach (var item in orderWebModel.OrderedItems)
+            {
+                orderedItems.Add(new Core.Models.OrderItemModel()
+                {
+                    ItemID = item.ItemID,
+                    Quantity = item.Quantity
+                });
+            }
+
+            var order = new OrderModel()
+            {
+                SendEmailNotification = orderWebModel.SendEmailNotification,
+                Email = orderWebModel.Email,
+                Comment = orderWebModel.Comment,
+                OrderTime = orderWebModel.OrderTime,
+                OrderedItems = orderedItems
+            };
+
+            await _communicationService.PlaceOrder(order);
         }
     }
 }
