@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Npgsql;
@@ -46,6 +47,7 @@ namespace PizzeriaNET.API.Database
             }
             catch (Exception ex)
             {
+                if(ex is SocketException) _logger.LogError("Could not connect to Database");
                 _logger.LogError(ex.Message);
             }
 
@@ -94,6 +96,11 @@ namespace PizzeriaNET.API.Database
             }
             catch (Exception ex)
             {
+                if (ex is SocketException)
+                {
+                    _logger.LogError("Could not connect to Database");
+                    throw;
+                }
                 _logger.LogError(ex.Message);
             }
         }
@@ -129,6 +136,7 @@ namespace PizzeriaNET.API.Database
             }
             catch (Exception ex)
             {
+                if (ex is SocketException) _logger.LogError("Could not connect to Database");
                 _logger.LogError(ex.Message);
             }
 

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaNET.Client.Core", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaNET.Client.WinForms", "PizzeriaNET.Client.WinForms\PizzeriaNET.Client.WinForms.csproj", "{0B66D1E0-D752-4671-B29C-A5785BE58497}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaNET.Client.Web", "PizzeriaNET.Client.Web\PizzeriaNET.Client.Web.csproj", "{00058801-72E6-44E2-AC9F-CC4A42F8E96A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaNET.Client.Web", "PizzeriaNET.Client.Web\PizzeriaNET.Client.Web.csproj", "{00058801-72E6-44E2-AC9F-CC4A42F8E96A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

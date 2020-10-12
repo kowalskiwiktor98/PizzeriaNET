@@ -26,6 +26,7 @@ namespace PizzeriaNET.API.Controllers
         {
             _logger.LogInformation("GetMenuItems Request");
             var menuItems = await _databaseHelper.GetMenuItems();
+            if (menuItems is null || !menuItems.Any()) return StatusCode(500);
             return Ok(menuItems);
         }
     }

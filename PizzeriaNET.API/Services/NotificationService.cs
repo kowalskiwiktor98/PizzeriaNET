@@ -24,6 +24,7 @@ namespace PizzeriaNET.API.Services
 
         public async Task SendConfirmEmail(string receiverEmail)
         {
+            _logger.LogInformation("Sending email notification");
             var client = new SendGridClient(_sendgridAPI);
             var from = new EmailAddress(_options.Value.EmailSenderAddress, _options.Value.EmailSenderTitle);
             var subject = "Order Confirmation";
