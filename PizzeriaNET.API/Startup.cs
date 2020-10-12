@@ -28,6 +28,9 @@ namespace PizzeriaNET.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var configuration = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory).AddJsonFile("appsettings.json", false).Build();
+            services.Configure<NotificationConfig>(configuration.GetSection(nameof(NotificationConfig)));
+
             services.AddScoped<IDatabaseHelper, DatabaseHelper>();
             services.AddScoped<INotificationService, NotificationService>();
 
