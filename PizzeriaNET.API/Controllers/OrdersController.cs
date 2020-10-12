@@ -19,12 +19,14 @@ namespace PizzeriaNET.API.Controllers
         private readonly ILogger<OrdersController> _logger;
         private readonly IDatabaseHelper _databaseHelper;
         private readonly INotificationService _notificationService;
+        private readonly IOrderParserHelper _orderParserHelper;
 
-        public OrdersController(ILogger<OrdersController> logger, IDatabaseHelper databaseHelper, INotificationService notificationService)
+        public OrdersController(ILogger<OrdersController> logger, IDatabaseHelper databaseHelper, INotificationService notificationService, IOrderParserHelper orderParserHelper)
         {
             _logger = logger;
             _databaseHelper = databaseHelper;
             _notificationService = notificationService;
+            _orderParserHelper = orderParserHelper;
         }
 
         [HttpPost]
@@ -41,26 +43,9 @@ namespace PizzeriaNET.API.Controllers
             try
             {
                 var orderEntries = await _databaseHelper.InsertOrder(placeOrderRequest);
-                var orderEntryFirst = orderEntries.First();
-                var order = new OrderHistory()
-                {
-                    ID = orderEntryFirst.OrderID,
-                    Date = orderEntryFirst.Date,
-                    Comment = orderEntryFirst.Comment,
-                    OrderItems = new List<OrderHistoryItem>()
-                };
-                foreach (var entry in orderEntries)
-                {
-                    order.OrderItems.Add(new OrderHistoryItem()
-                    {
-                        Name = entry.Item,
-                        Quantity = entry.Quantity,
-                        Price = entry.Price
-                    });
-                }
-
                 if (placeOrderRequest.SendEmailNotification)
                 {
+                    var order = _orderParserHelper.ParseNewOrder(orderEntries);
                     await _notificationService.SendConfirmEmail(order, placeOrderRequest.Email);
                 }
             }
@@ -77,40 +62,9 @@ namespace PizzeriaNET.API.Controllers
         [Route("GetOrderHistory")]
         public async Task<ActionResult> GetOrderHistory([FromQuery] string email)
         {
-            var orderHistory = new List<OrderHistory>();
             _logger.LogInformation("GetOrderHistory request");
             var orderHistoryEntries = await _databaseHelper.SelectOrderHistory(email);
-
-            foreach (var entry in orderHistoryEntries)
-            {
-                var index = orderHistory.FindIndex(item => item.ID == entry.OrderID);
-                if (index < 0)
-                {
-                    orderHistory.Add(new OrderHistory()
-                    {
-                        ID = entry.OrderID,
-                        Date = entry.Date,
-                        Comment = entry.Comment,
-                        OrderItems = new List<OrderHistoryItem>
-                        {
-                            new OrderHistoryItem()
-                            {
-                                Name = entry.Item,
-                                Quantity = entry.Quantity,
-                                Price = entry.Price
-                            }
-                        }
-                    });
-
-                }
-                else orderHistory[index].OrderItems.Add(new OrderHistoryItem()
-                {
-                    Name = entry.Item,
-                    Quantity = entry.Quantity,
-                    Price = entry.Price
-                });
-            }
-
+            var orderHistory = _orderParserHelper.ParseOrderHistory(orderHistoryEntries);
             return Ok(orderHistory);
         }
     }

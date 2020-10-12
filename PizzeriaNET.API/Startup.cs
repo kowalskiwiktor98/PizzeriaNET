@@ -34,6 +34,7 @@ namespace PizzeriaNET.API
 
             services.AddScoped<IDatabaseHelper, DatabaseHelper>();
             services.AddScoped<INotificationService, NotificationService>();
+            services.AddScoped<IOrderParserHelper, OrderParserHelper>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
