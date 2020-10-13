@@ -62,6 +62,7 @@ namespace PizzeriaNET.API.Controllers
         [Route("GetOrderHistory")]
         public async Task<ActionResult> GetOrderHistory([FromQuery] string email)
         {
+            if (string.IsNullOrWhiteSpace(email)) return BadRequest("Email is empty");
             _logger.LogInformation("GetOrderHistory request");
             var orderHistoryEntries = await _databaseHelper.SelectOrderHistory(email);
             var orderHistory = _orderParserHelper.ParseOrderHistory(orderHistoryEntries);

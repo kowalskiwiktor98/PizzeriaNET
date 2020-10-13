@@ -1,0 +1,516 @@
+{
+	"info": {
+		"_postman_id": "f7524f46-1dd0-441b-8e44-3a32d7c28221",
+		"name": "PizzeriaNET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MenuTests",
+			"item": [
+				{
+					"name": "Bad Method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d868b092-979f-4d39-840f-48b286928644",
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"  pm.response.to.have.status(405);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/menu",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Additional Query Param",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "27ee1461-d94b-48cf-8e85-7fb836368aa3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/menu?string=test",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"menu"
+							],
+							"query": [
+								{
+									"key": "string",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Additional Body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd0db366-2e21-4fd0-9418-ed5ccbd73702",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"string\":\"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/menu",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "GetHistory",
+			"item": [
+				{
+					"name": "No Query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ea6fb2d-470c-4cbf-b210-d2dca769e4b3",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/getorderhistory",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"getorderhistory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Empty Query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9dee6332-5aa2-4722-b337-2c8b21b285ac",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/getorderhistory?email=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"getorderhistory"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Good Query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7de8eb68-1e5a-4cc8-b62e-40699070732b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/getorderhistory?email=niema",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"getorderhistory"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "niema"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PlaceOrder",
+			"item": [
+				{
+					"name": "No Body",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d7230442-1495-4e37-b2b5-0b0b80e8b42b",
+								"exec": [
+									"pm.environment.set(\"currentDate\", new Date().toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7f0e5ad0-1e5b-4654-baf1-9211be0af394",
+								"exec": [
+									"pm.test(\"Status code is 415\", function () {\r",
+									"  pm.response.to.have.status(415);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/placeorder",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"placeorder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Empty Body",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a117a95b-3b22-48b3-b823-c06266f32f25",
+								"exec": [
+									"pm.environment.set(\"currentDate\", new Date().toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "831e5e2f-dbba-481f-afd3-a6cedcf0385b",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is 'Email is empty'\", function () {\r",
+									"  pm.response.to.have.body('Bad Request: Email is empty')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/placeorder",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"placeorder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bad Method",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f65f5c5c-72e4-4b00-ae93-919a1204330b",
+								"exec": [
+									"pm.environment.set(\"currentDate\", new Date().toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a774686-9ec4-48e2-8a09-30d528eb1f60",
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {\r",
+									"  pm.response.to.have.status(405);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/placeorder",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"placeorder"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Place Order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "50dcce01-359f-422c-ab59-283cde73ba06",
+						"exec": [
+							"pm.environment.set(\"currentDate\", new Date().toISOString());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"SendEmailNotification\": true,\r\n  \"Email\": \"kowalskiwiktor98+pizzeria@gmail.com\",\r\n  \"Comment\": \"proszem szypko\",\r\n  \"OrderTime\": \"{{currentDate}}\",\r\n  \"OrderedItems\":[\r\n    {\r\n        \"ItemID\": 1,\r\n        \"Quantity\": 1\r\n    },\r\n    {\r\n        \"ItemID\": 2,\r\n        \"Quantity\": 1\r\n    },\r\n    {\r\n        \"ItemID\": 3,\r\n        \"Quantity\": 1\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/placeorder",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"orders",
+						"placeorder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get History",
+			"protocolProfileBehavior": {
+				"followRedirects": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/orders/getorderhistory?email=niema",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"orders",
+						"getorderhistory"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "niema"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Menu",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1db80ec9-c28d-4eae-9997-58fb9ba93a90",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/menu",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"menu"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
