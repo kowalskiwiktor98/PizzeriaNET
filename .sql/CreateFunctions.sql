@@ -12,16 +12,6 @@ $$;
 
 alter function insertorder(text, text, timestamp) owner to postgres;
 
-create function selectorderhistory(_email text) returns TABLE(orderid integer, name character varying, quantity integer, price real)
-	language plpgsql
-as $$
-begin
-    return query SELECT O.id as OrderID, Item."Name", "Quantity", "OrderedItem"."Price" FROM "OrderedItem" JOIN "Order" O on "OrderedItem"."OrderID" = O.id JOIN "Item" Item ON "OrderedItem"."ItemID" = Item.id WHERE "Email" = _email;
-end;
-$$;
-
-alter function selectorderhistory(text) owner to postgres;
-
 create function selectitems() returns TABLE(id integer, name character varying, category character varying, price double precision)
 	language plpgsql
 as $$
@@ -44,3 +34,24 @@ end;
 $$;
 
 alter function insertorderitem(integer, integer, integer) owner to postgres;
+
+create function selectorderhistory(_email text) returns TABLE(orderid integer, date timestamp without time zone, comment text, name character varying, quantity integer, price real)
+	language plpgsql
+as $$
+begin
+    return query SELECT O.id as OrderID, O."Date", O."Comment", Item."Name", "Quantity", "OrderedItem"."Price" FROM "OrderedItem" JOIN "Order" O on "OrderedItem"."OrderID" = O.id JOIN "Item" Item ON "OrderedItem"."ItemID" = Item.id WHERE "Email" = _email;
+end;
+$$;
+
+alter function selectorderhistory(text) owner to postgres;
+
+create function selectinsertedorder(_id integer) returns TABLE(orderid integer, date timestamp without time zone, comment text, name character varying, quantity integer, price real)
+	language plpgsql
+as $$
+begin
+    return query SELECT O.id as OrderID, O."Date", O."Comment", Item."Name", "Quantity", "OrderedItem"."Price" FROM "OrderedItem" JOIN "Order" O on "OrderedItem"."OrderID" = O.id JOIN "Item" Item ON "OrderedItem"."ItemID" = Item.id WHERE O."id" = _id;
+end;
+$$;
+
+alter function selectinsertedorder(integer) owner to postgres;
+
