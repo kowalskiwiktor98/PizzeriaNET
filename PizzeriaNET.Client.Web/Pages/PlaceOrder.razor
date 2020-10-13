@@ -13,6 +13,10 @@
     {
         <p>Something went wrong</p>
     }
+    else if (orderRequestSent)
+    {
+        <p>Order was sent</p>
+    }
     else
     {
         <select @onchange="@selectedMainChanged">
@@ -64,6 +68,7 @@
 
 
 @code {
+    private bool orderRequestSent = false;
     private float totalPrice;
     private int quantity;
     private bool menuRequestDone = false;
@@ -157,5 +162,7 @@
             OrderedItems = orderItems
         };
         await _viewModelService.PlaceOrder(order);
+        orderRequestSent = true;
+        StateHasChanged();
     }
 }
