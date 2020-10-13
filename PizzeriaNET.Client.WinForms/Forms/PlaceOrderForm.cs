@@ -75,13 +75,15 @@ namespace PizzeriaNET.Client.WinForms.Forms
         {
             var order = new OrderFormModel()
             {
-                SendNotification = checkBoxNotification.Enabled,
+                SendNotification = checkBoxNotification.Checked,
                 Email = textBoxEmail.Text,
                 Comment = textBoxComment.Text,
                 OrderTime = DateTime.Now,
                 OrderedItems = orderItems
             };
             await _viewModelService.PlaceOrder(order);
+            _ = MessageBox.Show("Order was sent", "");
+            this.Dispose();
         }
 
         private void comboBoxMainDish_SelectedIndexChanged(object sender, EventArgs e)
