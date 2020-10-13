@@ -53,6 +53,8 @@ Website
 ## API
 - [Root/HealthCheck](https://api-pizzerianet.azurewebsites.net/)
 - [Swagger](https://api-pizzerianet.azurewebsites.net/swagger/index.html)
+
+NOTE: Swagger should not be enabled outside dev environment, i just enabled it i case someone wants to test api via browser
 - [Menu Endpoint](https://api-pizzerianet.azurewebsites.net/api/menu)
 
 ## Website
