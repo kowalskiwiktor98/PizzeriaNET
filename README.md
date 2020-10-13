@@ -33,6 +33,9 @@ Repository created for job interview at MetaPack Zielona Góra
 
 #
 # Possible Improvements
+
+**Currently both Website and Winforms doesn't really allow you to add multiple additions to a meal, but API itself and Database allow this**
+
 API
 - Add email validation
 - Add caching mechanism to Menu endpoint
@@ -46,6 +49,10 @@ WinForms
 Website
 - Add CSS and stuff. dunno im not a web designer ¯\\_(ツ)_/¯
 - Add email validation
+
+Database
+- Add indexes to speedup searching for order history
+- Cleanup mess with column and functions types, make it consistent
 
 #
 # Links
