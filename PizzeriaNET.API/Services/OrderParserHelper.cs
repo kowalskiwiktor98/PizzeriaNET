@@ -13,6 +13,7 @@ namespace PizzeriaNET.API.Services
             var orderHistory = new List<OrderHistory>();
             foreach (var entry in orderHistoryDb)
             {
+                if(entry.OrderID == 0 || string.IsNullOrWhiteSpace(entry.Item)) throw new ArgumentException();
                 var index = orderHistory.FindIndex(item => item.ID == entry.OrderID);
                 if (index < 0)
                 {
@@ -46,6 +47,8 @@ namespace PizzeriaNET.API.Services
         public OrderHistory ParseNewOrder(IEnumerable<OrderHistoryDB> newOrderFromDb)
         {
             var orderEntryFirst = newOrderFromDb.First();
+            if (orderEntryFirst.OrderID == 0 || string.IsNullOrWhiteSpace(orderEntryFirst.Item))
+                throw new ArgumentException();
             var order = new OrderHistory()
             {
                 ID = orderEntryFirst.OrderID,

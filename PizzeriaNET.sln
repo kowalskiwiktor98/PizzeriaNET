@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaNET.Client.WinForms
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzeriaNET.Client.Web", "PizzeriaNET.Client.Web\PizzeriaNET.Client.Web.csproj", "{00058801-72E6-44E2-AC9F-CC4A42F8E96A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzeriaNET.API.Tests", "PizzeriaNET.API.Tests\PizzeriaNET.API.Tests.csproj", "{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Release|x64.Build.0 = Release|Any CPU
 		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Release|x86.ActiveCfg = Release|Any CPU
 		{00058801-72E6-44E2-AC9F-CC4A42F8E96A}.Release|x86.Build.0 = Release|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Release|x64.Build.0 = Release|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF293923-2050-46A9-B9C0-6E7AE7A1AC20}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
