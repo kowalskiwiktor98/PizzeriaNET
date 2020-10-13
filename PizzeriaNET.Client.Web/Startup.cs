@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PizzeriaNET.Client.Web.Data;
 using PizzeriaNET.Client.Core.Services;
 using System;
 using System.Collections.Generic;
@@ -35,7 +34,6 @@ namespace PizzeriaNET.Client.Web
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddScoped<IViewModelService, ViewModelService>();
             services.AddScoped<ICommunicationService, CommunicationService>(provider =>
                 new CommunicationService(
