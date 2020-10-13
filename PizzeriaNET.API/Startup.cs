@@ -49,9 +49,11 @@ namespace PizzeriaNET.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PizzeriaNET.API v1"));
-            }
+            } 
+            //THIS SHOULD ONLY BE USED IN DEVELOPMENT MODE
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PizzeriaNET.API v1"));
+            //
 
             app.UseHttpsRedirection();
 
