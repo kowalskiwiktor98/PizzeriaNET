@@ -84,7 +84,6 @@ namespace PizzeriaNET.API.Database
                     {
                         await using (var command = new NpgsqlCommand("insertorderitem", connection))
                         {
-                            //FFS WHY THIS SHIT DOESN'T WORK LIKE IT SHOULD
                             command.CommandType = CommandType.StoredProcedure;
                             command.Parameters.AddWithValue("itemid", NpgsqlTypes.NpgsqlDbType.Integer, orderItem.ItemID);
                             command.Parameters.AddWithValue("quantity", NpgsqlTypes.NpgsqlDbType.Integer, orderItem.Quantity);
