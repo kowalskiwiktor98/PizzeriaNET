@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using PizzeriaNET.Client.Core.Models;
+﻿using PizzeriaNET.Client.Core.Models;
 using PizzeriaNET.Client.Core.Services;
 using PizzeriaNET.Client.Web.Models;
-using OrderItemModel = PizzeriaNET.Client.Web.Models.OrderItemModel;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PizzeriaNET.Client.Web.Services
 {

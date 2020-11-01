@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using PizzeriaNET.API.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using PizzeriaNET.API.Models;
 
 namespace PizzeriaNET.API.Database
 {

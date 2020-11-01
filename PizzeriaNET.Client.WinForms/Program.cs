@@ -1,12 +1,11 @@
-using System;
-using System.Windows.Forms;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PizzeriaNET.Client.Core.Services;
-using PizzeriaNET.Client.WinForms.Forms;
 using PizzeriaNET.Client.WinForms.Services;
+using System;
+using System.Windows.Forms;
 
 namespace PizzeriaNET.Client.WinForms
 {

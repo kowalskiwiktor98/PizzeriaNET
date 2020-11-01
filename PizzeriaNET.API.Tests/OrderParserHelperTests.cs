@@ -1,11 +1,9 @@
-﻿using System;
+﻿using NUnit.Framework;
+using PizzeriaNET.API.Models;
+using PizzeriaNET.API.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using PizzeriaNET.API.Services;
-using PizzeriaNET.API.Models;
 
 namespace PizzeriaNET.API.Tests
 {

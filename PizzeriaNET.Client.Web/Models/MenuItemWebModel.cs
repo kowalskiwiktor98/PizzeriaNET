@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PizzeriaNET.Client.Web.Models
+﻿namespace PizzeriaNET.Client.Web.Models
 {
     public class MenuItemWebModel
     {

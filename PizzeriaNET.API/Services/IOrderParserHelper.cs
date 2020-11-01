@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using PizzeriaNET.API.Models;
+﻿using PizzeriaNET.API.Models;
+using System.Collections.Generic;
 
 namespace PizzeriaNET.API.Services
 {

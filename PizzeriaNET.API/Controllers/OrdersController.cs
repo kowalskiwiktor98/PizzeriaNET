@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PizzeriaNET.API.Database;
 using PizzeriaNET.API.Models;
 using PizzeriaNET.API.Services;
+using System;
+using System.Threading.Tasks;
 
 namespace PizzeriaNET.API.Controllers
 {

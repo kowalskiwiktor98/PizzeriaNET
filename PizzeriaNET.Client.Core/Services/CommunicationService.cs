@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using PizzeriaNET.Client.Core.Models;
 using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PizzeriaNET.Client.Core.Services
 {

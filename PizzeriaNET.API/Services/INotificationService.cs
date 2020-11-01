@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using PizzeriaNET.API.Models;
+﻿using PizzeriaNET.API.Models;
+using System.Threading.Tasks;
 
 namespace PizzeriaNET.API.Services
 {

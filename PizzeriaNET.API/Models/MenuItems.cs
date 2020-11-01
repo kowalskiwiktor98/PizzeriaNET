@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace PizzeriaNET.API.Models
+﻿namespace PizzeriaNET.API.Models
 {
     public class MenuItems
     {

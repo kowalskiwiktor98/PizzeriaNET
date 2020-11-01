@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using PizzeriaNET.Client.WinForms.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using PizzeriaNET.Client.WinForms.Models;
 
 namespace PizzeriaNET.Client.WinForms.Services
 {

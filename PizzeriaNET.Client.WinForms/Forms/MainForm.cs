@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using PizzeriaNET.Client.Core;
-using PizzeriaNET.Client.Core.Services;
-using PizzeriaNET.Client.WinForms.Forms;
+﻿using PizzeriaNET.Client.WinForms.Forms;
 using PizzeriaNET.Client.WinForms.Services;
+using System;
+using System.Windows.Forms;
 
 namespace PizzeriaNET.Client.WinForms
 {

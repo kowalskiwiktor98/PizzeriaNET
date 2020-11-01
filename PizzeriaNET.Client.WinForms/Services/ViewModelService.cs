@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
+﻿using PizzeriaNET.Client.Core.Models;
 using PizzeriaNET.Client.Core.Services;
-using PizzeriaNET.Client.Core.Models;
 using PizzeriaNET.Client.WinForms.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using OrderItemModel = PizzeriaNET.Client.Core.Models.OrderItemModel;
 
 namespace PizzeriaNET.Client.WinForms.Services

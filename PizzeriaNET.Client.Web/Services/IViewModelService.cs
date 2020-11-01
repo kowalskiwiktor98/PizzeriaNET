@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using PizzeriaNET.Client.Web.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using PizzeriaNET.Client.Web.Models;
 
 namespace PizzeriaNET.Client.Web.Services
 {
