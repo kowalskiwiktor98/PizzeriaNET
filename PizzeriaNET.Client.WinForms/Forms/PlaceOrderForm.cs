@@ -39,9 +39,18 @@ namespace PizzeriaNET.Client.WinForms.Forms
         private async void PlaceOrderForm_Load(object sender, EventArgs e)
         {
             menuItems = await _viewModelService.GetMenuItems();
-            foreach (var item in menuItems)
+            if (menuItems is null || menuItems.Count() == 0)
             {
-                if (mainDishes.Contains(item.Category)) comboBoxMainDish.Items.Add(item);
+                MessageBox.Show("Could not retrieve menu");
+                this.Close();
+                this.Dispose();
+            }
+            else
+            {
+                foreach (var item in menuItems)
+                {
+                    if (mainDishes.Contains(item.Category)) comboBoxMainDish.Items.Add(item);
+                }
             }
         }
 
@@ -97,7 +106,10 @@ namespace PizzeriaNET.Client.WinForms.Forms
 
         private void comboBoxSideDish_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBoxAdditionPrice.Text = ((MenuItemFormModel)comboBoxSideDish.SelectedItem).Price.ToString() + " PLN";
+            if (comboBoxSideDish.SelectedItem is not null)
+            {
+                textBoxAdditionPrice.Text = ((MenuItemFormModel)comboBoxSideDish.SelectedItem).Price.ToString() + " PLN";
+            }
         }
     }
 }

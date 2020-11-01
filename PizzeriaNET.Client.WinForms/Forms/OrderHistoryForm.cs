@@ -18,14 +18,30 @@ namespace PizzeriaNET.Client.WinForms.Forms
 
         private async void buttonCheckHistory_Click(object sender, EventArgs e)
         {
-            var orderHistory = await _viewModelService.GetOrderHistory(textBox1.Text);
-            progressBar.Value = 100;
-            comboBoxOrders.Items.AddRange(orderHistory.ToArray());
+            if (String.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                MessageBox.Show("Please enter valid email");
+            }
+            else
+            {
+                var orderHistory = await _viewModelService.GetOrderHistory(textBox1.Text);
+                if (orderHistory is null || orderHistory.Count() == 0)
+                {
+                    MessageBox.Show("No orders could be found");
+                }
+                else
+                {
+                    progressBar.Value = 100;
+                    comboBoxOrders.Items.Clear();
+                    comboBoxOrders.Items.AddRange(orderHistory.ToArray());
+                }
+            }
         }
 
         private void comboBoxOrders_SelectionChanged(object sender, EventArgs e)
         {
             var order = comboBoxOrders.SelectedItem as OrderHistoryFormModel;
+            if (order is null) return;
             listBoxOrderDetails.DataSource = order.GetOrderedItemsDesctiptions();
         }
     }

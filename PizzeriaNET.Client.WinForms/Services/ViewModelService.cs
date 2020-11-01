@@ -21,6 +21,8 @@ namespace PizzeriaNET.Client.WinForms.Services
             var dataGridMenuItems = new List<MenuItemFormModel>();
             var menuItems = await _communicationService.GetMenuItems();
 
+            if (menuItems is null) return null;
+
             foreach (var item in menuItems)
             {
                 dataGridMenuItems.Add(new MenuItemFormModel()
@@ -39,6 +41,8 @@ namespace PizzeriaNET.Client.WinForms.Services
         {
             var orderHistory = await _communicationService.GetOrderHistory(email);
             var orderHistoryViewModel = new List<OrderHistoryFormModel>();
+
+            if (orderHistory is null) return null;
 
             foreach (var order in orderHistory)
             {
