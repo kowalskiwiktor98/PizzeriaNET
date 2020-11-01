@@ -8,6 +8,8 @@ namespace PizzeriaNET.Client.WinForms
     public partial class MainForm : Form
     {
         private readonly IViewModelService _viewModelService;
+        private OrderHistoryForm _orderHistoryForm;
+        private PlaceOrderForm _placeOrderForm;
 
         public MainForm(IViewModelService viewModelService)
         {
@@ -17,12 +19,30 @@ namespace PizzeriaNET.Client.WinForms
 
         private void buttonOrderHistory_Click(object sender, EventArgs e)
         {
-            new OrderHistoryForm(_viewModelService).Show();
+            if (_orderHistoryForm is null || _orderHistoryForm.IsDisposed)
+            {
+                _orderHistoryForm = new OrderHistoryForm(_viewModelService);
+                _orderHistoryForm.Show();
+            }
+            else
+            {
+                _orderHistoryForm.WindowState = FormWindowState.Normal;
+                _orderHistoryForm.Activate();
+            }
         }
 
         private void buttonPlaceNewOrder_Click(object sender, EventArgs e)
         {
-            new PlaceOrderForm(_viewModelService).Show();
+            if(_placeOrderForm is null || _placeOrderForm.IsDisposed)
+            {
+                _placeOrderForm = new PlaceOrderForm(_viewModelService);
+                _placeOrderForm.Show();
+            }
+            else
+            {
+                _placeOrderForm.WindowState = FormWindowState.Normal;
+                _placeOrderForm.Activate();
+            }
         }
     }
 }
