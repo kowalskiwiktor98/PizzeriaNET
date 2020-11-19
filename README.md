@@ -57,6 +57,8 @@ Database
 #
 # Links
 
+### Currently turned off due to hosting costs being too damn high
+
 ## API
 - [Root/HealthCheck](https://api-pizzerianet.azurewebsites.net/)
 - [Swagger](https://api-pizzerianet.azurewebsites.net/swagger/index.html)
